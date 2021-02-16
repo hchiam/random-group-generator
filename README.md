@@ -2,6 +2,8 @@
 
 https://random-group-generator.surge.sh
 
+<img src="demo.png" height="300" />
+
 Everthing else below was automatically generated from the svelte template repo:
 
 ---
