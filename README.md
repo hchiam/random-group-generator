@@ -4,6 +4,8 @@ https://random-group-generator.surge.sh
 
 Everthing else below was automatically generated from the svelte template repo:
 
+---
+
 _Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)_
 
 ---
