@@ -4,6 +4,8 @@ https://random-group-generator.surge.sh
 
 [<img src="demo.png" height="300" />](https://random-group-generator.surge.sh)
 
+Want to understand the core code? Look at [/src/App.svelte](https://github.com/hchiam/random-group-generator/blob/main/src/App.svelte)
+
 Everthing else below was automatically generated from the svelte template repo:
 
 ---
