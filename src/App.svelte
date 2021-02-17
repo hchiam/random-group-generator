@@ -32,46 +32,9 @@ Fred`;
 </script>
 
 <div id="container">
+  <h1>Random Group Generator</h1>
   <main>
-    <h1>Random Group Generator</h1>
-    <div>
-      <p>
-        Number of groups: <input
-          bind:value={numberOfGroups}
-          id="number_of_groups"
-          type="number"
-          step="1"
-          min="2"
-        />
-      </p>
-      <p>
-        <textarea
-          bind:value={names}
-          on:keyup={() => {
-            showGroups = false;
-          }}
-          placeholder={namesPlaceholder}
-          name="names"
-          id="names"
-          cols="55"
-          rows="10"
-        />
-      </p>
-      {#if enableMakeGroupsButton}
-        <button
-          id="make_groups"
-          on:click={() => {
-            setTimeout(() => {
-              showGroups = true;
-              shuffleGroups();
-              enableMakeGroupsButton = false;
-            }, 300);
-          }}
-          disabled={!enableMakeGroupsButton}>Make Groups</button
-        >
-      {:else}
-        <p class="button-note">(To create new groups, edit the names list.)</p>
-      {/if}
+    <section>
       <div id="groups">
         {#if showGroups}
           {#each Array(numberOfGroups) as _, i}
@@ -86,7 +49,48 @@ Fred`;
           {/each}
         {/if}
       </div>
-    </div>
+      <div id="main_controls">
+        <p>
+          Number of groups: <input
+            bind:value={numberOfGroups}
+            id="number_of_groups"
+            type="number"
+            step="1"
+            min="2"
+          />
+        </p>
+        {#if enableMakeGroupsButton}
+          <button
+            id="make_groups"
+            on:click={() => {
+              setTimeout(() => {
+                showGroups = true;
+                shuffleGroups();
+                enableMakeGroupsButton = false;
+              }, 300);
+            }}
+            disabled={!enableMakeGroupsButton}>Make Groups</button
+          >
+        {:else}
+          <p class="button-note">
+            (To create new groups, edit the names list.)
+          </p>
+        {/if}
+        <p>
+          <textarea
+            bind:value={names}
+            on:keyup={() => {
+              showGroups = false;
+            }}
+            placeholder={namesPlaceholder}
+            name="names"
+            id="names"
+            cols="30"
+            rows="10"
+          />
+        </p>
+      </div>
+    </section>
   </main>
 </div>
 
@@ -98,7 +102,11 @@ Fred`;
 />
 
 <style>
-  #container {
+  h1 {
+    text-align: center;
+  }
+
+  main {
     font-family: avenir, tahoma;
     padding: 1em;
     padding-bottom: 5em;
@@ -121,8 +129,12 @@ Fred`;
     box-shadow: 0 0 10px black;
   }
 
-  #groups {
-    margin-top: 1em;
+  section {
+    display: flex;
+  }
+
+  #main_controls {
+    margin-top: -1em;
   }
 
   .group {
@@ -150,5 +162,12 @@ Fred`;
     font-size: small;
     font-style: italic;
     margin-top: -0.5em;
+    color: yellow;
+  }
+
+  @media (max-width: 425px) {
+    section {
+      flex-direction: column-reverse;
+    }
   }
 </style>
