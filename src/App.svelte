@@ -20,7 +20,7 @@ Fred`;
 
   function shuffle(array) {
     /**
-     * Fisher-Yates/Knuth shuffle algorithm,
+     * Fisher-Yates/Knuth shuffle algorithm O(n),
      * with in-place swap,
      * and a growing "shuffled" section:
      */
