@@ -19,6 +19,11 @@ Fred`;
   $: enableMakeGroupsButton = names !== "";
 
   function shuffle(array) {
+    /**
+     * Fisher-Yates/Knuth shuffle algorithm,
+     * with in-place swap,
+     * and a growing "shuffled" section:
+     */
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
