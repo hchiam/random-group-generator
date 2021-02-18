@@ -7,7 +7,7 @@ Barbara
 Charlie
 David
 Eli
-Fred`;
+Freda`;
   let names = namesPlaceholder;
 
   $: namesArray = shuffle(names.split("\n").filter((name) => name !== ""));
