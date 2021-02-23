@@ -18,6 +18,8 @@ Freda`;
   $: if (numberOfGroups < 2) numberOfGroups = 2;
   $: enableMakeGroupsButton = names !== "";
 
+  $: showKeyboardNote = document.activeElement.id === "number_of_groups";
+
   function shuffle(array) {
     /**
      * Fisher-Yates/Knuth shuffle algorithm O(n),
@@ -55,14 +57,24 @@ Freda`;
         {/if}
       </div>
       <div id="main_controls">
-        <p>
-          Number of groups: <input
-            bind:value={numberOfGroups}
-            id="number_of_groups"
-            type="number"
-            step="1"
-            min="2"
-          />
+        <p id="number_of_groups_p">
+          Number of groups: <span
+            id="number_of_groups_wrapper"
+            class={showKeyboardNote ? "showKeyboardNote" : ""}
+            ><input
+              bind:value={numberOfGroups}
+              on:focus={() => {
+                showKeyboardNote = true;
+              }}
+              on:blur={() => {
+                showKeyboardNote = false;
+              }}
+              id="number_of_groups"
+              type="number"
+              step="1"
+              min="2"
+            />
+          </span>
         </p>
         {#if enableMakeGroupsButton}
           <button
@@ -174,5 +186,25 @@ Freda`;
     section {
       flex-direction: column-reverse;
     }
+  }
+
+  #number_of_groups_p {
+    position: relative;
+  }
+
+  #number_of_groups_wrapper:before {
+    content: "You can use keyboard arrow keys to change value.";
+    background: navy;
+    color: white !important;
+    position: absolute;
+    top: -1.5em;
+    width: 42ch;
+    left: -5ch;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  #number_of_groups_wrapper.showKeyboardNote:before {
+    opacity: 1;
   }
 </style>
